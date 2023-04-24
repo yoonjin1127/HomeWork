@@ -74,6 +74,82 @@ namespace DataStructure
             Node rootNode = nodes[0];   // 0번째 맨 위의 노드를 rootNode로 초기화
 
             // 1. 가장 마지막 노드를 최상단으로 위치
+            Node lastNode = nodes[nodes.Count - 1];     // 마지막 노드의 번호는 (노드 길이 - 1)
+            nodes[0] = lastNode;                        // 마지막 노드를 트리 맨위로 끌어올림
+            nodes.RemoveAt(nodes.Count - 1);            // RemoveAt 메소드를 사용해 맨 마지막 인덱스의 노드 제거
+
+            int index = 0;                              // 변수 index 정의 및 초기화
+
+            // 2. 자식 노드들과 비교하여 더 작은 자식과 교체
+            while (index < nodes.Count)                 // 인덱스(순번)은 노드 길이보다 짧아야함
+            {
+                int leftChildIndex = index * 2 + 1;     // 왼쪽 아래 노드 순번
+                int rightChildIndex = index * 2 + 2;    // 오른쪽 아래 노드 순번
+
+                // 2-1. 자식이 둘다 있는 경우
+                if(rightChildIndex < nodes.Count)       // 왼쪽 자식 노드부터 채워지므로, 둘 다 있는 경우는 오른쪽 자식 노드로 판단
+                {
+                    // 2-1-1. 왼쪽 자식과 오른쪽 자식을 비교하여 더 우선순위가 높은 자식을 선정
+                    int lessChildIndex = nodes[leftChildIndex].priority < nodes[rightChildIndex].priority
+                        ? leftChildIndex : rightChildIndex;             // 삼항 연산자 이용
+
+                    // 2-1-2. 더 우선순위가 높은 자식과 부모 노드를 비교하여
+                    // 부모가 우선순위가 더 낮은 경우 바꾸기
+                    if (nodes[lessChildIndex].priority < nodes[index].priority)
+                    {
+                        nodes[index] = nodes[lessChildIndex];
+                        nodes[lessChildIndex] = lastNode;
+                        index = lessChildIndex;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                // 2-2. 자식이 하나만 있는 경우 == 왼쪽 자식만 있는 경우
+                else if (leftChildIndex < nodes.Count)
+                {
+                    if (nodes[leftChildIndex].priority < nodes[index].priority)     // 교체해야 하는 상황
+                    {
+                        nodes[index] = nodes[leftChildIndex];
+                        nodes[leftChildIndex] = lastNode;
+                        index = leftChildIndex;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                // 2-3. 자식이 없는 경우
+                else
+                {
+                    break;
+                }
+            }
+
+            return rootNode.element;
+        }
+
+        public TElement Peek()
+        {
+            return nodes[0].element;
+        }
+
+        private int GetParentIndex(int childIndex)
+        {
+            return (childIndex - 1) / 2;
+        }
+
+        private int GetLeftChildIndex(int parentIndex)                                                                                                                // 함수화
+        {
+            return parentIndex * 2 + 1;
+        }
+
+        private int GetRightChildIndex(int parentIndex)
+        {
+            return parentIndex * 2 + 2;
         }
     }
 }
