@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _0424PriorityQueue
 {
-    internal class No2
+    internal class No2   // 기술 면접 정리
     {
         /****************************
          * 힙 (Heap)
