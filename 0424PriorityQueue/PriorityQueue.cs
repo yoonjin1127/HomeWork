@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataStructure
 {    
-    // 완전 이진트리는 배열로도 만들 수 있다
+    // 완전 이진트리는 !배열!로도 만들 수 있다
 
     /***********
      * 이진트리의 이동법
