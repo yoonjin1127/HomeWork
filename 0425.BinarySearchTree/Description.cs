@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _0425.BinarySearchTree
 {
-    internal class Description          // 2번
+    internal class Description          // 2번, 3번
     {
 
         /*************
