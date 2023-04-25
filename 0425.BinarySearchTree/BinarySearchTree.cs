@@ -66,6 +66,7 @@ namespace DataStructure         // 1번
                         break;
                     }
                 }
+                // 동일한 데이터가 들어온 경우
                 else
                 {
                     return false;
@@ -78,6 +79,75 @@ namespace DataStructure         // 1번
         {
             if (root == null)           // 루트가 없다면 거짓
             return false;
+
+            Node findNode = FindNode(item);     // 메서드 FindNode의 인스턴스 findNode 생성
+            // 찾는 값이 비었을 때
+            if (findNode == null)
+            {
+                return false;
+            }
+            // 찾는 값이 존재할 때
+            else
+            {
+                EraseNode(findNode);        // 찾는 값을 삭제
+                return true;
+            }
+
+        }
+
+        public void Clear()             // 전체 삭제 함수 생성
+        {
+            root = null;                // 루트에 null 삽입
+        }
+
+        public bool TryGetValue(T item, out T outValue)     // 노드 탐색 함수 생성
+        {
+            if (root == null)       // 루트가 없을 때 (트리가 비어있을 때)
+            {
+                outValue = default(T);  // outValue 기본값으로 초기화
+                return false;
+            }
+        }
+
+        private Node FindNode(T item)       // 해당 아이템을 가지는 노드를 찾는 메서드
+        {
+            if (root == null)               // 루트가 비었을 때 null 반환
+                return null;
+
+            Node current = root;            // 루트부터 노드를 정의
+            while (current != null)         // 노드가 비어있지 않은 경우 계속 반복
+            {
+                // 찾는 아이템이 노드의 아이템보다 작을 때
+                if (item.CompareTo(current.Item) < 0)        
+                {
+                    current = current.Left;                 // 새로운 값을 자식 삼아 판단
+                }
+                // 찾는 아이템이 노드의 아이템보다 클 때
+                else if (item.CompareTo(current.Item) > 0)
+                {
+                    current = current.Right;
+                }
+                // 찾는 아이템과 노드의 아이템이 동일할 때
+                {
+                    return current;                         // 노드의 아이템을 그대로 출력
+                }
+            }
+            return null;
+        }
+
+        private void EraseNode(Node node)                   // 삭제 함수 생성
+        {
+            if(node.HasNoChild)                             // 자식이 없는 노드의 경우
+            {
+                if (node.IsLeftChild)
+                    node.Parent.Left = null;                // 노드가 좌측 자식인 경우, 부모의 좌측 자식에 null 삽입
+
+                else if (node.IsRightChild)
+                    node.Parent.Right = null;                // 노드가 우측 자식인 경우, 부모의 우측 자식에 null 대입
+
+                else
+                    root = null;                             // 부모도 자식도 없는 노드는 루트이므로, 루트에 null 삽입
+            }
 
         }
 
