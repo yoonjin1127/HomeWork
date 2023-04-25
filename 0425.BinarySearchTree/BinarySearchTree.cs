@@ -79,7 +79,7 @@ namespace DataStructure         // 1번
         public bool Remove(T item)      // 제거 함수 생성
         {
             if (root == null)           // 루트가 없다면 거짓
-            return false;
+                 return false;
 
             Node findNode = FindNode(item);     // 메서드 FindNode의 인스턴스 findNode 생성
             // 찾는 값이 비었을 때
@@ -107,6 +107,18 @@ namespace DataStructure         // 1번
             {
                 outValue = default(T);  // outValue 기본값으로 초기화
                 return false;
+            }
+
+            Node findNode = FindNode(item);                 // 탐색 노드의 인스턴스 생성
+            if (findNode == null)                           // 탐색 노드가 비어있을 때
+            {
+                outValue = default(T);
+                return false;
+            }
+            else                                            // 탐색 노드가 차 있을 때
+            {
+                outValue = findNode.Item;
+                return true;
             }
         }
 
@@ -159,8 +171,30 @@ namespace DataStructure         // 1번
                 if (node.IsLeftChild)                           // 노드가 좌측 자식인 경우
                 {
                     parent.Left = child;
-                    child.Parent = parent;                       // 자식 
+                    child.Parent = parent;                       // 자식변수를 부모 노드 좌측에 삽입
+                }                                                // 부모를 자식의 부모노드에 삽입
+                
+                else if (node.IsRightChild)
+                {
+                    parent.Right = child;
+                    child.Parent = parent;
                 }
+                else                                            // 부모가 없으므로, 자식변수는 루트 노드이다
+                {
+                    root = child;
+                    child.Parent = parent;
+                }
+            }
+            else                                                 // if (HasBothChild) 자식노드가 두 개인 노드일 경우
+            {
+                // 왼쪽 자식 중 가장 큰 값과 데이터 교환한 후, 그 노드를 지워주는 방식으로 대체
+                Node replaceNode = node.Left;
+                while (replaceNode.Right != null)
+                {
+                    replaceNode = replaceNode.Right;        // 왼쪽 자식의 가장 아래쪽 오른쪽 자식으로 내려감 
+                }
+                node.Item = replaceNode.Item;
+                EraseNode(replaceNode);
             }
         }
 
