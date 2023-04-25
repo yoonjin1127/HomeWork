@@ -5,7 +5,9 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "0421.Stack", "0421.Stack\0421.Stack.csproj", "{F6254101-10D6-4C1A-B5FB-FDD4582CC7A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0424PriorityQueue", "0424PriorityQueue\0424PriorityQueue.csproj", "{23CD297A-FDBD-4909-89EE-621E59FF9FA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "0424PriorityQueue", "0424PriorityQueue\0424PriorityQueue.csproj", "{23CD297A-FDBD-4909-89EE-621E59FF9FA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0425.BinarySearchTree", "0425.BinarySearchTree\0425.BinarySearchTree.csproj", "{DA9BEC24-63EE-4652-B430-96E27C7F8131}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{23CD297A-FDBD-4909-89EE-621E59FF9FA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23CD297A-FDBD-4909-89EE-621E59FF9FA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23CD297A-FDBD-4909-89EE-621E59FF9FA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA9BEC24-63EE-4652-B430-96E27C7F8131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA9BEC24-63EE-4652-B430-96E27C7F8131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA9BEC24-63EE-4652-B430-96E27C7F8131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA9BEC24-63EE-4652-B430-96E27C7F8131}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
