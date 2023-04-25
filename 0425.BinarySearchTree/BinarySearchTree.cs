@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -148,7 +149,19 @@ namespace DataStructure         // 1번
                 else
                     root = null;                             // 부모도 자식도 없는 노드는 루트이므로, 루트에 null 삽입
             }
-
+            else if (node.HasLeftChild || node.HasRightChild)   // 우측 or 좌측 자식이 있는 노드의 경우
+            {
+                Node parent = node.Parent;                      // 자식 node의 부모 노드인 parent
+                // 삼항 연산자
+                // 좌측 자식이 있으면 좌측을, 좌측 자식이 존재하지 않으면 우측 자식을 child 변수에 대입
+                Node child = node.HasLeftChild ? node.Left : node.Right;
+               
+                if (node.IsLeftChild)                           // 노드가 좌측 자식인 경우
+                {
+                    parent.Left = child;
+                    child.Parent = parent;                       // 자식 
+                }
+            }
         }
 
         private class Node      // 노드 클래스 생성
