@@ -39,7 +39,34 @@ namespace _0426HashTable
 
         static void Main(string[] args)
         {
-        
+            DataStructure.Dictionary<string, string> Dictionary = new DataStructure.Dictionary<string, string>();
+
+            Dictionary.Add("facebook", "페북");
+            Dictionary.Add("instagram", "인스타");
+            Dictionary.Add("kakaotalk", "카톡");
+
+            Console.WriteLine(Dictionary["facebook"]);       // 키값은 인덱서를 통해 접근
+
+            if (Dictionary.ContainsKey("kakaotalk"))
+                Console.WriteLine("kakaotalk 키 값의 데이터가 있음");
+            else
+                Console.WriteLine("kakaotalk 키 값의 데이터가 없음");
+
+            if (Dictionary.Remove("kakaotalk"))
+                Console.WriteLine("kakaotalk 키 값에 해당하는 데이터를 지움");
+            else
+                Console.WriteLine("kakaotalk 키 값에 해당하는 데이터를 못지움");
+
+            if (Dictionary.ContainsKey("kakaotalk"))
+                Console.WriteLine("kakaotalk 키 값의 데이터가 있음");
+            else
+                Console.WriteLine("kakaotalk 키 값의 데이터가 없음");
+
+            string output;
+            if (Dictionary.TryGetValue("instagram", out output))
+                Console.WriteLine(output);
+            else
+                Console.WriteLine("instagram 키 값의 데이터가 없음");
         }
     }
 }
