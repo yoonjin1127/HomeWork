@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "0424PriorityQueue", "0424Pr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "0425.BinarySearchTree", "0425.BinarySearchTree\0425.BinarySearchTree.csproj", "{DA9BEC24-63EE-4652-B430-96E27C7F8131}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0426HashTable", "0426HashTable\0426HashTable.csproj", "{C87433F4-42B8-4190-8C8D-E13A6AEF3D93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "0426HashTable", "0426HashTable\0426HashTable.csproj", "{C87433F4-42B8-4190-8C8D-E13A6AEF3D93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaekJoonHanoi", "BaekJoonHanoi\BaekJoonHanoi.csproj", "{501C7E27-785A-4145-B654-33443C7B9485}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C87433F4-42B8-4190-8C8D-E13A6AEF3D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C87433F4-42B8-4190-8C8D-E13A6AEF3D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C87433F4-42B8-4190-8C8D-E13A6AEF3D93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{501C7E27-785A-4145-B654-33443C7B9485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{501C7E27-785A-4145-B654-33443C7B9485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{501C7E27-785A-4145-B654-33443C7B9485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{501C7E27-785A-4145-B654-33443C7B9485}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

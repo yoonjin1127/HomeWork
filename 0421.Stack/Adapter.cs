@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStructure     // 네임스페이스를 DataStructure (자료구조)로 변경
+namespace _0421.Stack     // 네임스페이스를 DataStructure (자료구조)로 변경
 {
     /*******
      * 어댑터 패턴 (Adapter)

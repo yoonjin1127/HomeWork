@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStructure         // 1번
+namespace _0425.BinarySearchTree         // 1번
 {
     internal class BinarySearchTree<T> where T : IComparable<T>  // 비교가능한 자료형만 T에 넣기        
     {
         private Node root;      // 루트 노드 정의
-        
+
         public BinarySearchTree()   // 생성자 함수
         {
-            this.root = null;       // 초기화
+            root = null;       // 초기화
         }
 
         public bool Add(T item)     // 추가 함수 생성
@@ -52,10 +52,10 @@ namespace DataStructure         // 1번
                         break;
                     }
                 }
-                else if (item.CompareTo(current.Item)>0)        // 자식이 부모보다 큰 경우
+                else if (item.CompareTo(current.Item) > 0)        // 자식이 부모보다 큰 경우
                 {
                     // 루트의 우측 자식이 존재하는 경우
-                    if (current.Right != null) 
+                    if (current.Right != null)
                     {
                         current = current.Right;
                     }
@@ -79,7 +79,7 @@ namespace DataStructure         // 1번
         public bool Remove(T item)      // 제거 함수 생성
         {
             if (root == null)           // 루트가 없다면 거짓
-                 return false;
+                return false;
 
             Node findNode = FindNode(item);     // 메서드 FindNode의 인스턴스 findNode 생성
             // 찾는 값이 비었을 때
@@ -105,14 +105,14 @@ namespace DataStructure         // 1번
         {
             if (root == null)       // 루트가 없을 때 (트리가 비어있을 때)
             {
-                outValue = default(T);  // outValue 기본값으로 초기화
+                outValue = default;  // outValue 기본값으로 초기화
                 return false;
             }
 
             Node findNode = FindNode(item);                 // 탐색 노드의 인스턴스 생성
             if (findNode == null)                           // 탐색 노드가 비어있을 때
             {
-                outValue = default(T);
+                outValue = default;
                 return false;
             }
             else                                            // 탐색 노드가 차 있을 때
@@ -131,7 +131,7 @@ namespace DataStructure         // 1번
             while (current != null)         // 노드가 비어있지 않은 경우 계속 반복
             {
                 // 찾는 아이템이 노드의 아이템보다 작을 때
-                if (item.CompareTo(current.Item) < 0)        
+                if (item.CompareTo(current.Item) < 0)
                 {
                     current = current.Left;                 // 새로운 값을 자식 삼아 판단
                 }
@@ -150,7 +150,7 @@ namespace DataStructure         // 1번
 
         private void EraseNode(Node node)                   // 삭제 함수 생성
         {
-            if(node.HasNoChild)                             // 자식이 없는 노드의 경우
+            if (node.HasNoChild)                             // 자식이 없는 노드의 경우
             {
                 if (node.IsLeftChild)
                     node.Parent.Left = null;                // 노드가 좌측 자식인 경우, 부모의 좌측 자식에 null 삽입
@@ -167,13 +167,13 @@ namespace DataStructure         // 1번
                 // 삼항 연산자
                 // 좌측 자식이 있으면 좌측을, 좌측 자식이 존재하지 않으면 우측 자식을 child 변수에 대입
                 Node child = node.HasLeftChild ? node.Left : node.Right;
-               
+
                 if (node.IsLeftChild)                           // 노드가 좌측 자식인 경우
                 {
                     parent.Left = child;
                     child.Parent = parent;                       // 자식변수를 부모 노드 좌측에 삽입
                 }                                                // 부모를 자식의 부모노드에 삽입
-                
+
                 else if (node.IsRightChild)
                 {
                     parent.Right = child;
@@ -219,11 +219,11 @@ namespace DataStructure         // 1번
             public T Item { get { return item; } set { item = value; } }      // item의 프로퍼티
             public Node Parent { get { return parent; } set { parent = value; } }   // parent의 프로퍼티
             public Node Left { get { return left; } set { left = value; } }       // left의 프로퍼티
-            public Node Right { get { return right;} set { right = value; } }     // right의 프로퍼티
+            public Node Right { get { return right; } set { right = value; } }     // right의 프로퍼티
 
             public bool IsRootNode { get { return parent == null; } }     // 루트 노드인지 아닌지 판단 (위에 더이상 부모가 없음)
             public bool IsLeftChild { get { return parent != null && parent.left == this; } }     // 좌측 노드인지 판단 (부모가 있고, this가 부모의 왼쪽에 위치)
-            public bool IsRightChild { get { return parent != null && parent.right ==this; } }    // 우측 노드인지 판단
+            public bool IsRightChild { get { return parent != null && parent.right == this; } }    // 우측 노드인지 판단
 
             public bool HasNoChild { get { return left == null && right == null; } }        // 자식이 없을 때 (왼쪽과 오른쪽이 모두 없음)
             public bool HasLeftChild { get { return left != null && right == null; } }      // 좌측 자식만 있을 때 (오른쪽이 없음)
@@ -232,5 +232,5 @@ namespace DataStructure         // 1번
 
         }
     }
-    
+
 }

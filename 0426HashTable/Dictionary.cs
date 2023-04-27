@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStructure
+namespace _0426HashTable
 {
     // 제네릭 클래스 Dictionary 생성
     internal class Dictionary<TKey, TValue> where TKey : IEquatable<TKey>   // 비교 가능한 값 
@@ -13,7 +13,7 @@ namespace DataStructure
 
         private struct Entry        // Entry 구조체 생성
         {
-            public enum State { None, Using, Deleted}       // 상태를 나타내는 자료형 생성
+            public enum State { None, Using, Deleted }       // 상태를 나타내는 자료형 생성
 
             public State state;
             public int hashCode;

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataStructure
-{    
+namespace _0424PriorityQueue
+{
     // 완전 이진트리는 !배열!로도 만들 수 있다
 
     /***********
@@ -33,12 +33,12 @@ namespace DataStructure
 
         public PriorityQueue()          // 생성자 함수로 nodes변수 초기화
         {
-            this.nodes = new List<Node>();
+            nodes = new List<Node>();
         }
 
         public int Count { get { return nodes.Count; } }    // 우선순위 큐의 크기(요소의 개수)를 반환
 
-       public void Enqueue(TElement element, int priority)  // 큐에 값을 추가하는 함수
+        public void Enqueue(TElement element, int priority)  // 큐에 값을 추가하는 함수
         {
             Node newNode = new Node() { element = element, priority = priority };
             // 새로운 노드 생성
@@ -56,7 +56,7 @@ namespace DataStructure
                 Node parentNode = nodes[parentIndex];               // 구한 순서를 대입
 
                 // 2-2. 자식 노드가 부모 노드보다 우선순위가 높으면 교체
-                if(newNode.priority < parentNode.priority)  // 기본적으로 내림차순(숫자가 작을수록 우선순위가 높다)
+                if (newNode.priority < parentNode.priority)  // 기본적으로 내림차순(숫자가 작을수록 우선순위가 높다)
                 {
                     nodes[newNodeIndex] = parentNode;       // 새 자식 노드 값에 부모노드 값을 넣음
                     nodes[parentIndex] = newNode;           // 부모노드 값에 새 자식노드 값을 넣음 (교체)
@@ -68,8 +68,8 @@ namespace DataStructure
                 }
 
             }
-       }
-       public TElement Dequeue ()   // TElement를 매개변수로 하는 함수
+        }
+        public TElement Dequeue()   // TElement를 매개변수로 하는 함수
         {                           // 큐에서 값을 제거
             Node rootNode = nodes[0];   // 0번째 맨 위의 노드를 rootNode로 초기화
 
@@ -87,7 +87,7 @@ namespace DataStructure
                 int rightChildIndex = index * 2 + 2;    // 오른쪽 아래 노드 순번
 
                 // 2-1. 자식이 둘다 있는 경우
-                if(rightChildIndex < nodes.Count)       // 왼쪽 자식 노드부터 채워지므로, 둘 다 있는 경우는 오른쪽 자식 노드로 판단
+                if (rightChildIndex < nodes.Count)       // 왼쪽 자식 노드부터 채워지므로, 둘 다 있는 경우는 오른쪽 자식 노드로 판단
                 {
                     // 2-1-1. 왼쪽 자식과 오른쪽 자식을 비교하여 더 우선순위가 높은 자식을 선정
                     int lessChildIndex = nodes[leftChildIndex].priority < nodes[rightChildIndex].priority
